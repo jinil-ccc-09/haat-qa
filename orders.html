@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orders · Haat</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/auth.js"></script>
+  <script>Auth.guard();</script>
+</head>
+<body>
+  <header id="siteHeader" class="site-header"></header>
+
+  <main class="wrap">
+    <h1 class="page-title">Your orders</h1>
+    <ul id="orderList" class="orders"></ul>
+    <div id="ordersEmpty" class="empty" hidden>
+      <p class="empty-title">No orders yet.</p>
+      <p>When you place an order it will show up here.</p>
+      <a class="btn btn--primary" href="products.html">Start shopping</a>
+    </div>
+  </main>
+
+  <footer class="site-footer"><p>Haat · a training storefront · no real payments are taken</p></footer>
+
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/checkout.js"></script>
+  <script src="js/orders.js"></script>
+  <script>document.addEventListener('DOMContentLoaded', () => Auth.mountHeader('orders'));</script>
+</body>
+</html>

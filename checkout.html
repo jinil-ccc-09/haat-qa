@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout · Haat</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/auth.js"></script>
+  <script>Auth.guard();</script>
+</head>
+<body>
+  <header id="siteHeader" class="site-header"></header>
+
+  <main class="wrap">
+    <div id="checkoutLayout">
+      <ol class="steps" aria-label="Checkout progress">
+        <li class="done">Basket</li>
+        <li class="now" aria-current="step">Delivery &amp; payment</li>
+        <li>Confirmation</li>
+      </ol>
+
+      <div class="split">
+        <form id="checkoutForm" class="panel form-grid" novalidate>
+          <h1 class="panel-title">Where should we send it?</h1>
+
+          <div class="field">
+            <label for="fullName">Full name</label>
+            <input type="text" id="fullName" maxlength="50" autocomplete="name" placeholder="As on your ID" aria-describedby="fullNameErr">
+            <p class="msg" id="fullNameErr"></p>
+          </div>
+
+          <div class="field">
+            <label for="phone">Mobile number</label>
+            <div class="prefix-wrap">
+              <span class="prefix" aria-hidden="true">+91</span>
+              <input type="tel" id="phone" maxlength="10" autocomplete="tel-national" placeholder="10-digit mobile number" aria-describedby="phoneErr">
+            </div>
+            <p class="msg" id="phoneErr"></p>
+          </div>
+
+          <div class="field field--full">
+            <label for="custEmail">Email</label>
+            <input type="email" id="custEmail" maxlength="50" autocomplete="email" placeholder="you@example.com" aria-describedby="custEmailErr">
+            <p class="msg" id="custEmailErr"></p>
+          </div>
+
+          <div class="field field--full field--area">
+            <label for="address">Delivery address</label>
+            <textarea id="address" rows="3" maxlength="200" autocomplete="street-address" placeholder="House no., street, area, city, state" aria-describedby="addressErr"></textarea>
+            <p class="msg" id="addressErr"></p>
+          </div>
+
+          <div class="field">
+            <label for="pincode">Pincode</label>
+            <input type="text" id="pincode" maxlength="6" inputmode="numeric" autocomplete="postal-code" placeholder="6-digit pincode" aria-describedby="pincodeErr">
+            <p class="msg" id="pincodeErr"></p>
+          </div>
+
+          <fieldset class="field field--full pay" aria-describedby="paymentErr">
+            <legend>Payment method</legend>
+            <div class="pay-tiles">
+              <label class="tile"><input type="radio" name="payment" value="Cash on Delivery"><span><b>Cash on delivery</b><small>Pay when it arrives</small></span></label>
+              <label class="tile"><input type="radio" name="payment" value="UPI"><span><b>UPI</b><small>Any UPI app</small></span></label>
+              <label class="tile"><input type="radio" name="payment" value="Card"><span><b>Card</b><small>Debit or credit</small></span></label>
+            </div>
+            <p class="msg" id="paymentErr"></p>
+          </fieldset>
+
+          <div class="field--full">
+            <button type="submit" id="placeOrder" class="btn btn--primary btn--block btn--lg">Place order</button>
+            <p class="hint center">By placing this order you agree to Haat's fair-trade terms.</p>
+          </div>
+        </form>
+
+        <aside id="checkoutSummary" class="panel summary" aria-label="Order summary"></aside>
+      </div>
+    </div>
+
+    <div id="checkoutEmpty" class="empty" hidden>
+      <p class="empty-title">There is nothing to check out.</p>
+      <p>Your basket is empty. Add a few pieces first.</p>
+      <a class="btn btn--primary" href="products.html">Browse the haat</a>
+    </div>
+
+    <section id="confirmation" class="confirm" hidden aria-live="polite"></section>
+  </main>
+
+  <footer class="site-footer"><p>Haat · a training storefront · no real payments are taken</p></footer>
+
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/checkout.js"></script>
+  <script>document.addEventListener('DOMContentLoaded', () => Auth.mountHeader(''));</script>
+</body>
+</html>

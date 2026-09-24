@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Basket · Haat</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/auth.js"></script>
+  <script>Auth.guard();</script>
+</head>
+<body>
+  <header id="siteHeader" class="site-header"></header>
+
+  <main class="wrap">
+    <h1 class="page-title">Your basket</h1>
+
+    <div id="cartLayout" class="split" hidden>
+      <section aria-label="Basket items">
+        <ul id="cartItems" class="lines"></ul>
+        <a class="link" href="products.html">← Keep browsing</a>
+      </section>
+
+      <aside class="panel summary" aria-label="Basket summary">
+        <div id="shipMeter" class="ship-meter"></div>
+
+        <form id="couponForm" class="coupon" novalidate>
+          <label for="couponInput">Have a coupon?</label>
+          <div class="coupon-row">
+            <input type="text" id="couponInput" placeholder="Enter code" autocomplete="off" spellcheck="false">
+            <button type="submit" class="btn btn--dark" id="applyCoupon">Apply</button>
+          </div>
+          <p id="couponMsg" class="msg" role="status"></p>
+          <div id="appliedCoupons" class="applied"></div>
+        </form>
+
+        <details class="offers">
+          <summary>Available offers</summary>
+          <ul id="offerList"></ul>
+        </details>
+
+        <div id="summaryRows" class="sum"></div>
+        <button type="button" id="toCheckout" class="btn btn--primary btn--block">Proceed to checkout</button>
+      </aside>
+    </div>
+
+    <div id="cartEmpty" class="empty" hidden>
+      <svg class="empty-art" viewBox="0 0 120 90" aria-hidden="true">
+        <path d="M20 35h80l-8 42H28z" fill="#f3e6cf" stroke="#1d2b53" stroke-width="3" stroke-linejoin="round"/>
+        <path d="M40 35c0-14 8-22 20-22s20 8 20 22" fill="none" stroke="#b5382a" stroke-width="3"/>
+        <g fill="#e3a72f"><circle cx="45" cy="56" r="4"/><circle cx="60" cy="56" r="4"/><circle cx="75" cy="56" r="4"/></g>
+      </svg>
+      <p class="empty-title">Your basket is empty.</p>
+      <p>Wander the stalls and pick something made by hand.</p>
+      <a class="btn btn--primary" href="products.html">Browse the haat</a>
+    </div>
+  </main>
+
+  <footer class="site-footer"><p>Haat · a training storefront · no real payments are taken</p></footer>
+
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script>document.addEventListener('DOMContentLoaded', () => Auth.mountHeader('cart'));</script>
+</body>
+</html>

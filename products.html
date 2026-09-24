@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop · Haat</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/auth.js"></script>
+  <script>Auth.guard();</script>
+</head>
+<body>
+  <header id="siteHeader" class="site-header"></header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div>
+        <p class="kicker">This week at the haat</p>
+        <h1>Pieces made slowly, <em>by hand</em>.</h1>
+        <p class="lead">Every item comes from a named craft cluster. Prices go straight to the maker.</p>
+      </div>
+      <div class="hero-seal" aria-hidden="true"><span>Free delivery<br>from ₹500</span></div>
+    </section>
+
+    <section class="toolbar" aria-label="Filter products">
+      <div class="search">
+        <label for="search" class="sr-only">Search products</label>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 20l-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <input type="search" id="search" placeholder="Search diyas, silk, toys…" autocomplete="off">
+      </div>
+      <div class="sort">
+        <label for="sort">Sort by</label>
+        <select id="sort">
+          <option value="featured">Featured</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+          <option value="name">Name: A to Z</option>
+        </select>
+      </div>
+    </section>
+
+    <div class="chips-row">
+      <div id="chips" class="chips" role="group" aria-label="Category"></div>
+      <p id="resultCount" class="count" aria-live="polite"></p>
+    </div>
+
+    <div id="grid" class="grid"></div>
+
+    <div id="emptyState" class="empty" hidden>
+      <p class="empty-title">Nothing matches that search.</p>
+      <p>Try another word, or clear the filters.</p>
+      <button type="button" id="clearFilters" class="btn btn--ghost">Clear filters</button>
+    </div>
+  </main>
+
+  <div class="modal" id="quickView" role="dialog" aria-modal="true" aria-labelledby="qvTitle" hidden>
+    <div class="modal-card modal-card--wide">
+      <button type="button" class="modal-x" data-close="quickView" aria-label="Close">&times;</button>
+      <div id="qvBody" class="qv"></div>
+    </div>
+  </div>
+
+  <footer class="site-footer"><p>Haat · a training storefront · no real payments are taken</p></footer>
+
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script>document.addEventListener('DOMContentLoaded', () => Auth.mountHeader('shop'));</script>
+</body>
+</html>

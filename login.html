@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Log in · Haat</title>
+  <meta name="description" content="Haat: a hand-made bazaar of Indian crafts.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="page-login">
+  <main class="login-shell">
+    <section class="login-story" aria-hidden="true">
+      <div class="story-inner">
+        <p class="story-kicker">Est. in a hundred villages</p>
+        <h1 class="story-title">Haat</h1>
+        <p class="story-line">Hand-made. Hand-picked.<br>Sent straight from the artisan's courtyard to your door.</p>
+        <ul class="story-facts">
+          <li><b>14</b> craft traditions</li>
+          <li><b>11</b> states</li>
+          <li><b>0</b> middlemen</li>
+        </ul>
+      </div>
+      <div class="story-block"></div>
+    </section>
+
+    <section class="login-panel">
+      <div class="login-card">
+        <div class="login-head">
+          <svg class="brand-mark brand-mark--ink" viewBox="0 0 40 40" aria-hidden="true">
+            <circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" stroke-width="2"/>
+            <g fill="currentColor">
+              <ellipse cx="20" cy="9" rx="3" ry="6"/>
+              <ellipse cx="20" cy="9" rx="3" ry="6" transform="rotate(45 20 20)"/>
+              <ellipse cx="20" cy="9" rx="3" ry="6" transform="rotate(90 20 20)"/>
+              <ellipse cx="20" cy="9" rx="3" ry="6" transform="rotate(135 20 20)"/>
+              <ellipse cx="20" cy="9" rx="3" ry="6" transform="rotate(180 20 20)"/>
+              <ellipse cx="20" cy="9" rx="3" ry="6" transform="rotate(225 20 20)"/>
+              <ellipse cx="20" cy="9" rx="3" ry="6" transform="rotate(270 20 20)"/>
+              <ellipse cx="20" cy="9" rx="3" ry="6" transform="rotate(315 20 20)"/>
+            </g>
+            <circle cx="20" cy="20" r="4" fill="#e3a72f"/>
+          </svg>
+          <div>
+            <h2>Welcome back</h2>
+            <p class="sub">Log in to shop the bazaar.</p>
+          </div>
+        </div>
+
+        <div id="formAlert" class="alert" role="alert" hidden></div>
+
+        <form id="loginForm" class="login-form" novalidate>
+          <div class="field f-email">
+            <label for="email">Email address</label>
+            <input type="email" id="email" name="email" maxlength="50" autocomplete="username" placeholder="you@example.com" aria-describedby="emailErr">
+            <p class="msg" id="emailErr"></p>
+          </div>
+
+          <div class="field f-captcha">
+            <label for="captchaInput">Captcha</label>
+            <div class="captcha-row">
+              <canvas id="captchaCanvas" class="captcha-canvas" width="180" height="56" role="img" aria-label="Captcha image"></canvas>
+              <button type="button" id="captchaRefresh" class="icon-btn" aria-label="Get a new captcha" title="New captcha">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.34-5.66M20 4v5h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </div>
+            <input type="text" id="captchaInput" name="captcha" autocomplete="off" spellcheck="false" placeholder="Type the characters above" aria-describedby="captchaInputErr captchaHint">
+            <p class="hint" id="captchaHint">Letters are case-sensitive.</p>
+            <p class="msg" id="captchaInputErr"></p>
+          </div>
+
+          <div class="field f-pass">
+            <label for="password">Password</label>
+            <div class="pass-wrap">
+              <input type="password" id="password" name="password" autocomplete="current-password" placeholder="8 to 20 characters" aria-describedby="passwordErr">
+              <button type="button" id="togglePass" class="pass-toggle" aria-pressed="false" aria-label="Show password">Show</button>
+            </div>
+            <p class="msg" id="passwordErr"></p>
+          </div>
+
+          <div class="f-row">
+            <label class="check">
+              <input type="checkbox" id="remember" name="remember">
+              <span>Remember me</span>
+            </label>
+            <a href="#" id="forgotLink" class="link">Forgot password?</a>
+          </div>
+
+          <button type="submit" id="loginBtn" class="btn btn--primary btn--block f-submit">Log in</button>
+
+          <p class="f-foot">New to Haat? <a href="#" id="registerLink" class="link">Create an account</a></p>
+        </form>
+      </div>
+      <p class="fine">Training build · for QA practice only</p>
+    </section>
+  </main>
+
+  <div class="modal" id="forgotModal" role="dialog" aria-modal="true" aria-labelledby="forgotTitle" hidden>
+    <div class="modal-card">
+      <button type="button" class="modal-x" data-close="forgotModal" aria-label="Close">&times;</button>
+      <h2 id="forgotTitle">Reset your password</h2>
+      <p class="sub">We'll email you a link to set a new password.</p>
+      <form id="forgotForm" novalidate>
+        <div class="field">
+          <label for="forgotEmail">Email address</label>
+          <input type="email" id="forgotEmail" maxlength="50" placeholder="you@example.com">
+          <p class="msg" id="forgotMsg" role="status"></p>
+        </div>
+        <button type="submit" class="btn btn--primary btn--block">Send reset link</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal" id="registerModal" role="dialog" aria-modal="true" aria-labelledby="registerTitle" hidden>
+    <div class="modal-card">
+      <button type="button" class="modal-x" data-close="registerModal" aria-label="Close">&times;</button>
+      <h2 id="registerTitle">Sign-ups open soon</h2>
+      <p class="sub">New accounts are not open yet. Please log in with a demo account from your trainer.</p>
+      <button type="button" class="btn btn--primary btn--block" data-close="registerModal">Got it</button>
+    </div>
+  </div>
+
+  <script src="js/auth.js"></script>
+  <script src="js/captcha.js"></script>
+</body>
+</html>
